@@ -7,41 +7,57 @@
 
 using namespace std;
 
-int main(){
-
-    VideoGame game;
-    string nombre;
-    Categoria category;
-    string nombreCategoria;
+int main() {
+    vector<Categoria> categorias;
     int eleccion;
+    string nombre, nombreCategoria;
 
+    while (true) {
+        cout<<"¿Qué desea hacer?:\n(1) Para añadir un juego.\n(2) Para mostrar los juegos de las categorias.\n(3) Para salir."<<endl;
+            cin>>eleccion;
 
-    cout<<"¿Qué desea hacer?:\n(1) Para añadir un juego.\n(2) Para ingresar una categoria.\n(3) Para mostrar los juegos de las categorias."<<endl;
-        cin>>eleccion;
-    
-    switch(eleccion){
-        case 1:{
-            cout<<"Ingrese el nombre del videojuego: ";
-                cin>>nombre;
-            game.setNombre(nombre);
-            cout<<"Ingrese el nombre de la categoria: ";
-                cin>>nombreCategoria;
-            category.setNombre(nombreCategoria);
-        }
-        case 2:{
-            cout<<"Ingrese el nombre de la categoria: ";
-                cin>>nombreCategoria;
-            category.setNombre(nombreCategoria);
-        }
-        case 3:{
+        switch(eleccion) {
+            case 1: {
+                cout<<"Ingrese el nombre del videojuego: ";
+                    cin>>nombre;
+                cout<<"Ingrese el nombre de la categoria: ";
+                    cin>>nombreCategoria;
 
+                VideoGame videojuego(nombre);
+                bool categoriaExiste = false;
+
+                for (Categoria& categoria : categorias) {
+                    if (categoria.getNombre() == nombreCategoria) {
+                    categoria.anadirJuego(videojuego);
+                    categoriaExiste = true;
+                    break;
+                    }
+                }
+
+                if (!categoriaExiste) {
+                    Categoria nuevaCategoria(nombreCategoria);
+                    nuevaCategoria.anadirJuego(videojuego);
+                    categorias.push_back(nuevaCategoria);
+                }
+
+                break;
+            }
+            case 2: {
+                for (Categoria categoria : categorias) {
+                    cout<<"Categoria: "<<categoria.getNombre()<<endl;
+                    for (VideoGame videojuego : categoria.getVideojuegos()) {
+                        cout<<"Videojuego: "<<videojuego.getNombre()<<endl;
+                    }
+                }
+                break;
+            }
+            case 3: {
+                return 0;
+            }
+            default:{
+                cout<<"Opción inválida."<<endl;
+                break;
+            }
         }
     }
-
-    category.anadirJuego(game);
-
-    cout<<"Los juegos de la categoria "<<category.getNombre()<<" son: "<<endl;
-    category.mostrarJuegos();
-
-    return 0;
 }

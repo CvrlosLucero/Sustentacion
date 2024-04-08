@@ -6,29 +6,38 @@ using namespace std;
 class VideoGame {
     private:
         string nombre;
+        int fechaLanzamiento;
 
     public:
     VideoGame(string nombre):nombre(nombre) {}
 
-        string getNombre() {
+        string getNombre() const{
             return nombre;
         }
 
         void setNombre(string nombre) {
             this->nombre = nombre;
         }
+
+        int getFechaLanzamiento() const{
+            return fechaLanzamiento;
+        }
+
+        void setFechaLanzamiento(int fechaLanzamiento) {
+            this->fechaLanzamiento = fechaLanzamiento;
+        }
 };
 
 class Categoria{
     private:
         string nombre;
-        vector <VideoGame> videojuegos;
-        vector <string> categorias;
-
     public:
         Categoria(string nombre):nombre(nombre) {}
 
-        string getNombre() {
+        vector <VideoGame> videojuegos;
+        vector <string> categorias;
+
+        string getNombre() const{
             return nombre;
         }
 
@@ -40,16 +49,12 @@ class Categoria{
             videojuegos.push_back(videogame);
         }
 
-        void mostrarJuegos() {
-            for (int i = 0; i<videojuegos.size(); i++) {
-                cout<<videojuegos[i].getNombre()<<endl;
-            }
+        void anadirCategoria(string categoria) {
+            categorias.push_back(categoria);
         }
 
-        void mostrarCategorias(){
-            for (int j = 0; j<categorias.size(); j++){
-                cout<<categorias[j].getNombre()<<endl;
-            }
+        const vector<VideoGame> getVideojuegos() const { 
+            return videojuegos;
         }
 };
 
