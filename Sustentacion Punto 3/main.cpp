@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     vector<Categoria> categorias;
     int eleccion;
-    string nombre, nombreCategoria;
+    string nombre, nombreCategoria, fechaLanzamiento;
 
     while (true) {
         cout<<"¿Qué desea hacer?:\n(1) Para añadir un juego.\n(2) Para mostrar los juegos de las categorias.\n(3) Para salir."<<endl;
@@ -22,8 +22,10 @@ int main() {
                     cin>>nombre;
                 cout<<"Ingrese el nombre de la categoria: ";
                     cin>>nombreCategoria;
+                cout<<"Ingrese la fecha de lanzamiento: ";
+                    cin>>fechaLanzamiento;
 
-                VideoGame videojuego(nombre);
+                VideoGame videojuego(nombre, fechaLanzamiento);
                 bool categoriaExiste = false;
 
                 for (Categoria& categoria : categorias) {
@@ -47,6 +49,7 @@ int main() {
                     cout<<"Categoria: "<<categoria.getNombre()<<endl;
                     for (VideoGame videojuego : categoria.getVideojuegos()) {
                         cout<<"Videojuego: "<<videojuego.getNombre()<<endl;
+                        cout<<"Fecha de lanzamiento: "<<videojuego.getFechaLanzamiento()<<endl;
                     }
                 }
                 break;

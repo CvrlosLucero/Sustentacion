@@ -6,10 +6,10 @@ using namespace std;
 class VideoGame {
     private:
         string nombre;
-        int fechaLanzamiento;
+        string fechaLanzamiento;
 
     public:
-    VideoGame(string nombre):nombre(nombre) {}
+    VideoGame(string nombre, string fechaLanzamiento) : nombre(nombre), fechaLanzamiento(fechaLanzamiento) {}
 
         string getNombre() const{
             return nombre;
@@ -19,7 +19,7 @@ class VideoGame {
             this->nombre = nombre;
         }
 
-        int getFechaLanzamiento() const{
+        string getFechaLanzamiento() const{
             return fechaLanzamiento;
         }
 
