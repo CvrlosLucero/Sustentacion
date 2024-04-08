@@ -13,15 +13,30 @@ int main(){
     string nombre;
     Categoria category;
     string nombreCategoria;
+    int eleccion;
 
 
-    cout<<"Ingrese el nombre del videojuego: ";
-    cin>>nombre;
-    game.setNombre(nombre);
+    cout<<"¿Qué desea hacer?:\n(1) Para añadir un juego.\n(2) Para ingresar una categoria.\n(3) Para mostrar los juegos de las categorias."<<endl;
+        cin>>eleccion;
+    
+    switch(eleccion){
+        case 1:{
+            cout<<"Ingrese el nombre del videojuego: ";
+                cin>>nombre;
+            game.setNombre(nombre);
+            cout<<"Ingrese el nombre de la categoria: ";
+                cin>>nombreCategoria;
+            category.setNombre(nombreCategoria);
+        }
+        case 2:{
+            cout<<"Ingrese el nombre de la categoria: ";
+                cin>>nombreCategoria;
+            category.setNombre(nombreCategoria);
+        }
+        case 3:{
 
-    cout<<"Ingrese el nombre de la categoria: ";
-    cin>>nombreCategoria;
-    category.setNombre(nombreCategoria);
+        }
+    }
 
     category.anadirJuego(game);
 

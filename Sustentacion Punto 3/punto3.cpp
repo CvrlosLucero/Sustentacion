@@ -23,6 +23,7 @@ class Categoria{
     private:
         string nombre;
         vector <VideoGame> videojuegos;
+        vector <string> categorias;
 
     public:
         Categoria(string nombre):nombre(nombre) {}
@@ -40,8 +41,14 @@ class Categoria{
         }
 
         void mostrarJuegos() {
-            for (int i = 0; i < videojuegos.size(); i++) {
+            for (int i = 0; i<videojuegos.size(); i++) {
                 cout<<videojuegos[i].getNombre()<<endl;
+            }
+        }
+
+        void mostrarCategorias(){
+            for (int j = 0; j<categorias.size(); j++){
+                cout<<categorias[j].getNombre()<<endl;
             }
         }
 };
